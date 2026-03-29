@@ -2,142 +2,669 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DualMinds AI</title>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DualMinds AI | AI Solutions Built for Real-World Operations</title>
+  <meta
+    name="description"
+    content="DualMinds AI helps organisations turn AI into practical operational value through advisory, automation, operational intelligence, and delivery."
+  />
   <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1729;
+      --panel: rgba(255, 255, 255, 0.06);
+      --panel-strong: rgba(255, 255, 255, 0.09);
+      --text: #f5f7fb;
+      --muted: #b7c3d6;
+      --line: rgba(255, 255, 255, 0.12);
+      --accent: #6ee7ff;
+      --accent-2: #8b5cf6;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --max: 1160px;
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: #0a0a0a;
-      color: #ffffff;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(110, 231, 255, 0.12), transparent 35%),
+        radial-gradient(circle at top right, rgba(139, 92, 246, 0.14), transparent 32%),
+        linear-gradient(180deg, #091423 0%, #07111f 48%, #050c17 100%);
+      color: var(--text);
       line-height: 1.6;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     .container {
-      max-width: 1000px;
+      width: min(calc(100% - 40px), var(--max));
       margin: 0 auto;
-      padding: 60px 20px;
     }
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(7, 17, 31, 0.76);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    h2 {
-      margin-top: 60px;
-      font-size: 28px;
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
     }
 
-    p {
-      color: #bbbbbb;
-      font-size: 18px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
     }
 
-    .tagline {
-      font-size: 20px;
-      color: #ddd;
-      margin-bottom: 30px;
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid;
+      place-items: center;
+      color: #06101d;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+      flex: 0 0 auto;
     }
 
-    .section {
-      margin-top: 60px;
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
     }
 
-    .card {
-      border: 1px solid #222;
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 20px;
+    .brand-text small {
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
     }
 
     .btn {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 12px 20px;
-      border: 1px solid #444;
-      text-decoration: none;
-      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-weight: 600;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text);
     }
 
     .btn:hover {
-      border-color: white;
+      transform: translateY(-1px);
+      border-color: rgba(255, 255, 255, 0.24);
     }
 
-    .footer {
-      margin-top: 80px;
-      font-size: 14px;
-      color: #777;
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #80bfff 55%, var(--accent-2));
+      color: #07111f;
+      border: none;
+      box-shadow: 0 10px 30px rgba(110, 231, 255, 0.22);
+    }
+
+    .hero {
+      padding: 88px 0 64px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.04);
+      margin-bottom: 22px;
+      font-size: 0.92rem;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 6vw, 5rem);
+      line-height: 1.02;
+      margin: 0 0 18px;
+      letter-spacing: -0.04em;
+      max-width: 10.5ch;
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      color: var(--muted);
+      max-width: 62ch;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .hero-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.4rem;
+    }
+
+    .hero-metric {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .metric {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(5, 12, 23, 0.55);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 26px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card {
+      padding: 24px;
+      border-radius: var(--radius);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .card ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(110, 231, 255, 0.16), rgba(139, 92, 246, 0.16));
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .band {
+      margin: 20px 0;
+      padding: 20px 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .band strong {
+      font-size: 1.05rem;
+    }
+
+    .band span {
+      color: var(--muted);
+    }
+
+    .num {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(110, 231, 255, 0.15);
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .quote {
+      font-size: 1.12rem;
+      color: var(--text);
+      margin: 0 0 10px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .cta {
+      padding: 34px;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at top left, rgba(110,231,255,0.14), transparent 35%),
+        linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer {
+      padding: 34px 0 54px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 22px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-4,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      h1 {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-inner {
+        padding: 14px 0;
+      }
+
+      .brand-text small {
+        display: none;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero {
+        padding-top: 64px;
+      }
     }
   </style>
 </head>
-
 <body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <div class="brand-mark">DM</div>
+        <div class="brand-text">
+          <span>DualMinds AI</span>
+          <small>AI Solutions Built for Real-World Operations</small>
+        </div>
+      </a>
 
-  <div class="container">
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-    <h1>DualMinds AI</h1>
-
-    <div class="tagline">
-      AI Solutions Built for Real-World Operations
+      <a class="btn" href="mailto:hello@dualminds-ai.com">hello@dualminds-ai.com</a>
     </div>
+  </nav>
 
-    <p>
-      DualMinds AI helps organisations turn AI ambition into operational advantage — combining advisory, automation, operational intelligence, and delivery to solve real business problems.
-    </p>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">AI Solutions Built for Real-World Operations</div>
+          <h1>Turn AI ambition into operational advantage.</h1>
+          <p>
+            DualMinds AI helps organisations move from AI interest to measurable execution — combining advisory, automation, operational intelligence, and delivery to solve high-value operational problems with clarity, discipline, and commercial focus.
+          </p>
 
-    <a class="btn" href="mailto:hello@dualminds-ai.com">Contact Us</a>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:hello@dualminds-ai.com">Start a conversation</a>
+            <a class="btn" href="#services">Explore services</a>
+          </div>
 
-    <div class="section">
-      <h2>What We Do</h2>
+          <div class="trust-row">
+            <div class="tag">AI Advisory</div>
+            <div class="tag">Automation</div>
+            <div class="tag">Operational Intelligence</div>
+            <div class="tag">Enterprise Delivery</div>
+          </div>
+        </div>
 
-      <div class="card">
-        <strong>AI Advisory</strong>
-        <p>Define where AI can create real value across operations and workflows.</p>
+        <div class="hero-card">
+          <div class="muted" style="margin-bottom: 8px;">Where we help</div>
+          <h3>From strategy through to operational execution.</h3>
+          <p class="muted">
+            We focus on the point where technology, operations, and measurable outcomes meet.
+          </p>
+
+          <div class="hero-metric">
+            <div class="metric">
+              <strong>Advisory</strong>
+              <span class="muted">Roadmaps, use cases, operating models</span>
+            </div>
+            <div class="metric">
+              <strong>Delivery</strong>
+              <span class="muted">Practical implementation and rollout</span>
+            </div>
+            <div class="metric">
+              <strong>Automation</strong>
+              <span class="muted">Workflow improvement and AI-enabled execution</span>
+            </div>
+            <div class="metric">
+              <strong>Operational Intelligence</strong>
+              <span class="muted">Insight, workflow intelligence, and continuous optimisation</span>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <strong>Automation</strong>
-        <p>Design and implement practical automation that reduces manual effort and improves execution.</p>
+    <section>
+      <div class="container">
+        <div class="band">
+          <div>
+            <strong>Built for organisations that expect substance, not AI theatre.</strong>
+          </div>
+          <span>Consulting-led support for enterprise change, operational improvement, and scalable execution.</span>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <strong>Operational Intelligence</strong>
-        <p>Improve visibility, decision-making, and performance across business operations.</p>
-      </div>
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <h2>What we do</h2>
+          <p>
+            We help clients apply AI and automation in ways that improve operational performance, reduce friction, and create usable business value.
+          </p>
+        </div>
 
-      <div class="card">
-        <strong>Delivery</strong>
-        <p>Move from strategy to execution with structured, outcome-focused implementation.</p>
+        <div class="grid-4">
+          <article class="card">
+            <div class="icon">01</div>
+            <h3>AI Advisory</h3>
+            <p>
+              Define where AI can create real value across operations, service delivery, workflow, reporting, and support functions.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">02</div>
+            <h3>Automation</h3>
+            <p>
+              Design and implement practical automations that reduce manual effort, improve quality, and accelerate execution.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">03</div>
+            <h3>Operational Intelligence</h3>
+            <p>
+              Create sharper visibility across workflows, services, and business operations so leaders and teams can make faster, better-informed decisions.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="icon">04</div>
+            <h3>Delivery Support</h3>
+            <p>
+              Move from concept to implementation with structured delivery, stakeholder alignment, and a bias toward usable outcomes.
+            </p>
+          </article>
+        </div>
       </div>
+    </section>
+
+    <section id="approach">
+      <div class="container">
+        <div class="section-head">
+          <h2>How we work</h2>
+          <p>
+            A consulting-led approach grounded in enterprise delivery, operational reality, and measurable progress.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card">
+            <div class="num">1</div>
+            <h3>Discover</h3>
+            <p>
+              Understand the current landscape, operational pain points, constraints, dependencies, and value opportunities.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="num">2</div>
+            <h3>Design</h3>
+            <p>
+              Shape a pragmatic path forward covering use cases, workflows, governance, tooling, metrics, and change approach.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="num">3</div>
+            <h3>Deliver</h3>
+            <p>
+              Execute in a way that fits the organisation — focusing on adoption, usability, and operational sustainability.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="outcomes">
+      <div class="container">
+        <div class="section-head">
+          <h2>What good looks like</h2>
+          <p>
+            We focus on outcomes that leaders and operational teams both recognise: sharper visibility, better prioritisation, stronger execution, and clearer business value.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <h3>Typical client priorities</h3>
+            <ul>
+              <li>Identify high-value AI use cases grounded in operational reality</li>
+              <li>Reduce manual effort through practical automation</li>
+              <li>Improve reporting, workflow visibility, and decision quality</li>
+              <li>Create scalable approaches rather than one-off experiments</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>What we optimise for</h3>
+            <ul>
+              <li>Clarity over complexity</li>
+              <li>Delivery over presentation</li>
+              <li>Adoption over technical novelty</li>
+              <li>Operational value over hype</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="grid-2">
+          <article class="card">
+            <p class="quote">“The most valuable AI initiatives are the ones that fit how the business actually works.”</p>
+            <div class="muted">DualMinds AI approach</div>
+          </article>
+
+          <article class="card">
+            <p class="quote">“We help clients connect strategy, systems, data, and delivery so that AI becomes a disciplined operational capability — not a disconnected experiment.”</p>
+            <div class="muted">Consulting-grade execution, built for real environments</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2 style="margin:0 0 10px; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.03em;">
+              Ready to shape the next phase?
+            </h2>
+            <p class="muted" style="margin:0; max-width: 60ch;">
+              Whether you are exploring AI strategy, workflow automation, or operational improvement, we can help turn ambition into a practical plan.
+            </p>
+          </div>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="mailto:hello@dualminds-ai.com">Contact us</a>
+            <a class="btn" href="mailto:hello@dualminds-ai.com">hello@dualminds-ai.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 DualMinds AI. All rights reserved.</div>
+      <div>AI Advisory · Automation · Operational Intelligence · Delivery</div>
     </div>
-
-    <div class="section">
-      <h2>How We Work</h2>
-
-      <div class="card">
-        <strong>Discover</strong>
-        <p>Understand current challenges, constraints, and opportunities.</p>
-      </div>
-
-      <div class="card">
-        <strong>Design</strong>
-        <p>Create a clear, practical roadmap aligned to business outcomes.</p>
-      </div>
-
-      <div class="card">
-        <strong>Deliver</strong>
-        <p>Execute in a way that drives adoption and measurable value.</p>
-      </div>
-    </div>
-
-    <div class="footer">
-      © 2026 DualMinds AI<br>
-      AI Advisory · Automation · Operational Intelligence · Delivery
-    </div>
-
-  </div>
-
+  </footer>
 </body>
 </html>
